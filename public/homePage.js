@@ -40,7 +40,7 @@ moneyManager.addMoneyCallback = (data) => {
         ProfileWidget.showProfile(response.data);
         moneyManager.setMessage(response.success, 'Баланс пополнен успешно!');
       } else {
-        moneyManager.setMessage(!response.success, response.error);
+        moneyManager.setMessage(response.success, response.error);
       }
     }
   )
@@ -53,7 +53,7 @@ moneyManager.conversionMoneyCallback = (data) => {
         ProfileWidget.showProfile(response.data);
         moneyManager.setMessage(response.success, 'Конвертация выполнена успешно.');
       } else {
-        moneyManager.setMessage(!response.success, response.error);
+        moneyManager.setMessage(response.success, response.error);
       }
     }
   )
@@ -66,7 +66,7 @@ moneyManager.sendMoneyCallback = (data) => {
         ProfileWidget.showProfile(response.data);
         moneyManager.setMessage(response.success, 'Перевод средств выполнен успешно.');
       } else {
-        moneyManager.setMessage(!response.success, response.error);
+        moneyManager.setMessage(response.success, response.error);
       }
     }
   )
@@ -74,8 +74,8 @@ moneyManager.sendMoneyCallback = (data) => {
 
 ApiConnector.getFavorites((response) => {
   if (response.success) {
-    ratesBoard.clearTable();
-    ratesBoard.fillTable(response.data);
+    favoritesWidget.clearTable();
+    favoritesWidget.fillTable(response.data);
     moneyManager.updateUsersList(response.data)
   }
 })
